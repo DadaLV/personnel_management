@@ -10,9 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_09_214343) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_10_132239) do
   create_table "employees", force: :cascade do |t|
-    t.integer "id_number"
     t.string "first_name"
     t.string "middle_name"
     t.string "last_name"
