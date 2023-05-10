@@ -1,4 +1,5 @@
 class Employee < ApplicationRecord
+  has_many :positions
   
   validates :first_name, presence: true, length: {minimum: 2, maximum: 30}
   validates :middle_name, allow_blank: true, length: {minimum: 2, maximum: 30}
