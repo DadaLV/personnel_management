@@ -1,5 +1,7 @@
 class Employee < ApplicationRecord
-  
+  has_many :employee_positions, dependent: :destroy
+  has_many :positions, through: :employee_positions
+    
   validates :first_name, presence: true, length: {minimum: 2, maximum: 30}
   validates :middle_name, allow_blank: true, length: {minimum: 2, maximum: 30}
   validates :last_name, presence: true, length: {minimum: 2, maximum: 30}
@@ -12,7 +14,7 @@ class Employee < ApplicationRecord
   private
 
   def date_of_birth_not_younger_than_15_years
-    if date_of_birth.present? && date_of_birth > Date.today - 15.years
+    if date_of_birth.present? && date_of_birth > 15.years.ago
       errors.add(:date_of_birth, "employee must be at least 15 years old")
     end
   end

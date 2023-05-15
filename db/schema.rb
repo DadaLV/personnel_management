@@ -10,7 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_10_132239) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_15_082852) do
+  create_table "departments", force: :cascade do |t|
+    t.string "name"
+    t.string "abbreviation"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "employee_positions", force: :cascade do |t|
+    t.integer "employee_id", null: false
+    t.integer "position_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["employee_id"], name: "index_employee_positions_on_employee_id"
+    t.index ["position_id"], name: "index_employee_positions_on_position_id"
+  end
+
   create_table "employees", force: :cascade do |t|
     t.string "first_name"
     t.string "middle_name"
@@ -21,6 +37,28 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_10_132239) do
     t.string "home_address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "department_id", null: false
+    t.index ["department_id"], name: "index_employees_on_department_id"
   end
 
+  create_table "positions", force: :cascade do |t|
+    t.string "name"
+    t.decimal "salary"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "vacations", force: :cascade do |t|
+    t.date "start_date"
+    t.date "end_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "employee_id", null: false
+    t.index ["employee_id"], name: "index_vacations_on_employee_id"
+  end
+
+  add_foreign_key "employee_positions", "employees"
+  add_foreign_key "employee_positions", "positions"
+  add_foreign_key "employees", "departments"
+  add_foreign_key "vacations", "employees"
 end
