@@ -14,7 +14,7 @@ class Employee < ApplicationRecord
   private
 
   def date_of_birth_not_younger_than_15_years
-    if date_of_birth.present? && date_of_birth > Date.today - 15.years
+    if date_of_birth.present? && date_of_birth > 15.years.ago
       errors.add(:date_of_birth, "employee must be at least 15 years old")
     end
   end
