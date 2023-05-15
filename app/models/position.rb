@@ -1,5 +1,5 @@
 class Position < ApplicationRecord
-  has_many :employee_positions
+  has_many :employee_positions, dependent: :destroy
   has_many :employees, through: :employee_positions
   
   validates :name, presence: true, length: { minimum: 3, maximum: 30 }
