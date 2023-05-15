@@ -1,7 +1,7 @@
 class Employee < ApplicationRecord
   has_many :employee_positions, dependent: :destroy
   has_many :positions, through: :employee_positions
-  has_many :vacations
+  has_many :vacations, dependent: :destroy
   belongs_to :department
     
   validates :first_name, presence: true, length: {minimum: 2, maximum: 30}
