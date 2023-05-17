@@ -1,0 +1,8 @@
+<h1>Departments</h1>
+<ul>
+  <% @departments.each do |department| %>
+    <li>
+      <%= link_to department.name, department_employees_path(department) %>
+    </li>
+  <% end %>
+</ul>

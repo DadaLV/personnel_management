@@ -1,0 +1,10 @@
+<h1><%= @department.name %> Employees</h1>
+<% if @employees.any? %>
+  <ul>
+    <% @employees.each do |employee| %>
+      <li><%= employee.full_name %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No employees found.</p>
+<% end %>
