@@ -1,0 +1,20 @@
+<%= form_with(model: [@employee, @employee_position]) do |form| %>
+  <% if @employee_position.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@employee_position.errors.count, "error") %> prohibited this position from being saved:</h2>
+      <ul>
+        <% @employee_position.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+   
+  <h3>Choose position</h3>
+ <div class="form-group mb-4 col-sm-4">    
+    <%= form.collection_select :position_id, Position.all, :id, :name, { prompt: true }, class: "form-select form-select-lg mb-3" %>
+    <%= form.submit "Add Position", class: "btn btn-primary" %>
+  </div>
+
+  
+<% end %>
