@@ -1,0 +1,79 @@
+<div class="container m-4">
+  <div class="row">
+    <div class="col-4">
+
+      <h2>Edit Employee</h2>
+      <%= form_with(model: @employee, url: employee_path(@employee), method: :patch) do |form| %>
+        <div class="card" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title">
+              <%= form.text_field :first_name, class: "form-control", placeholder: "First Name" %>
+              <%= form.text_field :middle_name, class: "form-control", placeholder: "Middle Name" %>
+              <%= form.text_field :last_name, class: "form-control", placeholder: "Last Name" %>
+              <%= form.label :department_id %>
+              <%= form.collection_select :department_id, Department.all, :id, :name, { prompt: "Select department" }, class: "form-control" %>
+            </h5>
+            <h6 class="card-subtitle mb-2 text-body-secondary mt-2">
+              <% if @employee.positions.any? %>
+                Current position: <%= @employee.positions.last.name %>
+              <% else %>
+                No current position
+              <% end %>
+            </h6>
+            <table class="table table-hover table-bordered mt-4">
+              <tbody>
+                <tr>
+                  <th>Passport Data</th>
+                  <th><%= form.text_field :passport_data, class: "form-control" %></th>
+                </tr>
+                <tr>
+                  <th>Date of Birth</th>
+                  <th><%= form.date_field :date_of_birth, class: "form-control" %></th>
+                </tr>
+                <tr>
+                  <th>Place of Birth</th>
+                  <th><%= form.text_field :place_of_birth, class: "form-control" %></th>
+                </tr>
+                <tr>
+                  <th>Home Address</th>
+                  <th><%= form.text_field :home_address, class: "form-control" %></th>
+                </tr>
+              </tbody>
+            </table>
+            <div class="row align-items-start">
+              <div class="col">
+                <%= form.submit "Update Employee", class: "btn btn-light" %>
+              </div>
+              <div class="col">
+                <%= button_to employee_path(@employee), method: :delete, onclick: "return confirm('Are you sure?')", class: "btn btn-light", form: { class: "d-inline" } do %>
+                  Delete Employee
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div class="col">
+
+      <h3>Positions</h3>
+      <% if @employee.positions.any? %>
+        <ul class="col-sm-5">
+          <% @employee.positions.each do |position| %>
+            <ol class="list-group list-group-flus">
+              <li class="list-group-item"><%= position.name %> <%= position.salary %></li>
+            </ol>
+          <% end %>
+        </ul>
+      <% else %>
+        <p>No positions found for this employee.</p>
+      <% end %>
+
+    </div>
+  </div>
+  <div class="row-2 mt-2">
+    <%= link_to "Add Position", new_employee_employee_position_path(@employee), class: "btn btn-primary" %>
+    <%= link_to "Return to Employees List", employees_path, class: "btn btn-primary" %>
+    <%= link_to "Return to Departments List", departments_path, class: "btn btn-primary" %>
+  </div>
+</div>

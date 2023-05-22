@@ -1,30 +1,41 @@
-<h1>The list of Employees of Department</h1> 
-<table class="table table-hover table-striped table-bordered">
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th scope="col">First Name</th>
-      <th scope="col">Middle Name</th>
-      <th scope="col">Last Name</th>
-      <th scope="col">Passport Data</th>
-      <th scope="col">Date of Birth</th>
-      <th scope="col">Place of Birth</th>
-      <th scope="col">Home Adress</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @employees.each do |employee| %>
+<div class="container m-4">
+  <h1>The list of Employees of <%= @department.name %></h1> 
+  <table class="table table-hover table-striped table-bordered">
+    <thead>
       <tr>
-        <td scope="row"><%= employee.id %></td>
-        <td><%= employee.first_name %></td>
-        <td><%= employee.middle_name %></td>
-        <td><%= employee.last_name %></td>
-        <td><%= employee.passport_data %></td>
-        <td><%= employee.date_of_birth %></td>
-        <td><%= employee.place_of_birth %></td>
-        <td><%= employee.home_address %></td>
-        <td><%= link_to "View Position", employees_path, class: "btn btn-primary" %></td>
+        <th>ID</th>
+        <th scope="col">First Name</th>
+        <th scope="col">Middle Name</th>
+        <th scope="col">Last Name</th>
+        <th scope="col">Passport Data</th>
+        <th scope="col">Date of Birth</th>
+        <th scope="col">Place of Birth</th>
+        <th scope="col">Home Adress</th>
+        <th scope="col">Head of department</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @employees.each do |employee| %>
+        <tr>
+          <td scope="row"><%= employee.id %></td>
+          <td><%= employee.first_name %></td>
+          <td><%= employee.middle_name %></td>
+          <td><%= employee.last_name %></td>
+          <td><%= employee.passport_data %></td>
+          <td><%= employee.date_of_birth %></td>
+          <td><%= employee.place_of_birth %></td>
+          <td><%= employee.home_address %></td>
+          <td>
+            <% if employee.positions.any? %>
+              <% if employee.positions.last.name == "Head of Department" %>
+                Head of Department
+              <% end %>
+            <% end %>
+          </td>
+          <td><%= link_to "View Details", employee_path(employee), class: "btn btn-primary" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= link_to "Return to Employees List", employees_path, class: "btn btn-primary mt-4" %>
+</div>

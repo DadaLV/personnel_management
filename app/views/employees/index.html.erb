@@ -11,33 +11,41 @@
       
     <% end %>      
   </div>
-  <table class="table table-hover table-striped table-bordered">
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th scope="col">First Name</th>
-        <th scope="col">Middle Name</th>
-        <th scope="col">Last Name</th>
-        <th scope="col">Passport Data</th>
-        <th scope="col">Date of Birth</th>
-        <th scope="col">Place of Birth</th>
-        <th scope="col">Home Adress</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @employees.each do |employee| %>
+  <% if @employees.present? %>
+    <table class="table table-hover table-striped table-bordered">
+      <thead>
         <tr>
-          <td scope="row"><%= employee.id %></td>
-          <td><%= employee.first_name %></td>
-          <td><%= employee.middle_name %></td>
-          <td><%= employee.last_name %></td>
-          <td><%= employee.passport_data %></td>
-          <td><%= employee.date_of_birth %></td>
-          <td><%= employee.place_of_birth %></td>
-          <td><%= employee.home_address %></td>
-          <td><%= link_to "View Position", employee_path(employee), class: "btn btn-primary" %></td>
+          <th>ID</th>
+          <th scope="col">First Name</th>
+          <th scope="col">Middle Name</th>
+          <th scope="col">Last Name</th>
+          <th scope="col">Passport Data</th>
+          <th scope="col">Date of Birth</th>
+          <th scope="col">Place of Birth</th>
+          <th scope="col">Home Adress</th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+        <% @employees.each do |employee| %>
+          <tr>
+            <td scope="row"><%= employee.id %></td>
+            <td><%= employee.first_name %></td>
+            <td><%= employee.middle_name %></td>
+            <td><%= employee.last_name %></td>
+            <td><%= employee.passport_data %></td>
+            <td><%= employee.date_of_birth %></td>
+            <td><%= employee.place_of_birth %></td>
+            <td><%= employee.home_address %></td>
+            <td><%= link_to "View Position", employee_path(employee), class: "btn btn-primary" %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    <p>No employees found for this department.</p>
+  <% end %>
+  <% if @department.present? %>
+  <p>No employees found for this department.</p>
+<% end %>
+<%= link_to "New Employee", new_employee_path(department_id: @department&.id), class: "btn btn-primary" %>
 </div>

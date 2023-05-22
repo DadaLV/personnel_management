@@ -1,5 +1,5 @@
 class DepartmentsController < ApplicationController
   def index
-    @departments = Department.all.includes(:employees)
+    @departments = Department.all
   end
 end

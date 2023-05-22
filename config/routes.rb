@@ -11,4 +11,6 @@ Rails.application.routes.draw do
   get 'department_employees', to: 'employees#department_employees'
   resources :positions_path, only: [:index, :new, :create, :edit, :update]
   resources :positions
+  resources :departments, only: [:index]
+  
 end
