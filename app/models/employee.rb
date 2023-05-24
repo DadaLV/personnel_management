@@ -14,12 +14,19 @@ class Employee < ApplicationRecord
   validate :date_of_birth_not_younger_than_15_years
   validates :place_of_birth, presence: true, length: {minimum: 2, maximum: 30}
   validates :home_address, presence: true, length: {minimum: 2, maximum: 30}
+  validate :department_employee_limit
 
   private
 
   def date_of_birth_not_younger_than_15_years
     if date_of_birth.present? && date_of_birth > 15.years.ago
       errors.add(:date_of_birth, "employee must be at least 15 years old")
+    end
+  end
+
+  def department_employee_limit
+    if department.present? && department.employees.count >= 10
+      errors.add(:base, "Maximum number of employees (10) reached for this department.")
     end
   end
 
