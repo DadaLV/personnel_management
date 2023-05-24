@@ -14,10 +14,6 @@ class Employee < ApplicationRecord
   validate :date_of_birth_not_younger_than_15_years
   validates :place_of_birth, presence: true, length: {minimum: 2, maximum: 30}
   validates :home_address, presence: true, length: {minimum: 2, maximum: 30}
-  
-  def head_of_department?
-    positions.any? { |position| position.name == "Head of Department" }
-  end
 
   private
 
