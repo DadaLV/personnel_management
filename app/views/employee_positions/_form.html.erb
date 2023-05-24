@@ -1,14 +1,5 @@
 <%= form_with(model: [@employee, @employee_position]) do |form| %>
-  <% if @employee_position.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@employee_position.errors.count, "error") %> prohibited this position from being saved:</h2>
-      <ul>
-        <% @employee_position.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <%= render "shared/error_messages", object: @employee_position %>
    
   <h3>Choose position</h3>
  <div class="form-group mb-4 col-sm-4">    
