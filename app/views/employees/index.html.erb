@@ -4,7 +4,7 @@
   
   <h3>Sort by Department</h3>
   <div class="form-group mb-4 col-sm-6">    
-    <%= form_with(url: department_employees_url, method: :get) do |form| %>
+    <%= form_with(url: employees_path, method: :get) do |form| %>
       
         <%= form.collection_select :department_id, Department.all, :id, :name, prompt: "Select Department", class: "form-select form-select-lg mb-6" %>
         <%= form.submit "Show Employees", class: "btn btn-primary" %>
@@ -44,8 +44,6 @@
   <% else %>
     <p>No employees found for this department.</p>
   <% end %>
-  <% if @department.present? %>
-  <p>No employees found for this department.</p>
-<% end %>
-<%= link_to "New Employee", new_employee_path(department_id: @department&.id), class: "btn btn-primary" %>
+  
+<%= link_to "New Employee", new_employee_path(department_id: @department_id), class: "btn btn-primary" %>
 </div>

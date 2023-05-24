@@ -7,8 +7,8 @@ Rails.application.routes.draw do
   resources :employees do
     resources :employee_positions, only: [:new, :create]
   end
-  get 'department_employees', to: 'employees#department_employees'
+  
   resources :positions
-  resources :departments, only: [:index]
+  resources :departments
   
 end
