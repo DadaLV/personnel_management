@@ -1,0 +1,36 @@
+<%= form_with(model: @department) do |form| %>
+  <% if @department.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@department.errors.count, "error") %> prohibited this department from being saved:</h2>
+      <ul>
+        <% @department.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field mb-3">
+  <div class="col-sm-3">
+    <%= form.label :name %>
+  </div>
+  <div class="col-sm-9">
+    <%= form.text_field :name %>
+  </div>
+</div>
+
+<div class="field mb-3">
+  <div class="col-sm-3">
+    <%= form.label :abbreviation %>
+  </div>
+  <div class="col-sm-9">
+    <%= form.text_field :abbreviation %>
+  </div>
+</div>
+
+  <div class="mb-3">
+    <%= form.submit class: "btn btn-primary"%>
+  </div>
+  <%= link_to "Go to Employees List", employees_path, class: "btn btn-primary mt-4" %>
+  <%= link_to "Go to Departments List", departments_path, class: "btn btn-primary mt-4" %>
+<% end %>

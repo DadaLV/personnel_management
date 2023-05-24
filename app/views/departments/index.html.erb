@@ -1,8 +1,42 @@
-<h1>Departments</h1>
-<ul>
-  <% @departments.each do |department| %>
-    <li>
-      <%= link_to department.name, department_employees_path(department_id: department.id) %>
-    </li>
-  <% end %>
-</ul>
+<div class="conainer m-4">
+  <h1>Departments</h1>
+  
+  <table class="table table-hover table-striped table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">Department Name</th>
+        <th scope="col">Department Abbreviation</th>
+        <th scope="col">Head of Department</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @departments.each do |department| %>
+        <tr>
+          <td scope="row"><%= department.name %></td>
+          <td><%= department.abbreviation %></td>
+          
+          <td>
+          <% if department.employees.any? %>
+            <% department.employees.each do |employee| %>
+              <% if employee.positions.any? && employee.positions.last.name == @head_of_department %>
+                <%= employee.first_name %> <%= employee.last_name %>
+              <% break %>
+              <% end %>
+            <% end %>  
+          <% end %>
+          </td>
+          <td><%= link_to "Show", department, class: "btn btn-primary" %></td>
+          <td><%= link_to "Edit", edit_department_path(department), class: "btn btn-primary" %></td>
+          <td><%= button_to department_path(department), method: :delete, onclick: "return confirm('Are you sure?')", class: "btn btn-danger", form: { class: "d-inline" } do %>
+      Delete
+    <% end %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+
+  <%= link_to "Create Department", new_department_path, class: "btn btn-primary" %>
+</div>
