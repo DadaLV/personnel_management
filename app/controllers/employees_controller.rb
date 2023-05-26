@@ -3,13 +3,8 @@ class EmployeesController < ApplicationController
   before_action :set_employee, only: [:show, :edit, :update, :destroy]
   
   def index
-    @department_id = params[:department_id]
-    if params[:department_id].present?
-      @department = Department.find(params[:department_id])
-      @employees = @department.employees
-    else
-      @employees = Employee.all
-    end
+    @employees = Employee.order(first_name: :asc, last_name: :asc)
+    @employees = @employees.for_department(params[:department_id]) if params[:department_id].present?
   end
 
   def show

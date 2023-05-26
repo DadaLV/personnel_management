@@ -18,15 +18,13 @@
           <td><%= department.abbreviation %></td>
           <td><%= department.employees.count %></td>
           
-          <td>
-          <% if department.employees.any? %>
+          <td>          
             <% department.employees.each do |employee| %>
               <% if employee.positions.any? && employee.positions.last.name == @head_of_department %>
-                <%= employee.first_name %> <%= employee.last_name %>
+                <%= department_decorator.head_of_department %>
               <% break %>
               <% end %>
-            <% end %>  
-          <% end %>
+            <% end %>            
           </td>
           <td><%= link_to "Show", department, class: "btn btn-primary" %></td>
           <td><%= link_to "Edit", edit_department_path(department), class: "btn btn-primary" %></td>
