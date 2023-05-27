@@ -17,11 +17,10 @@
           <td scope="row"><%= department.name %></td>
           <td><%= department.abbreviation %></td>
           <td><%= department.employees.count %></td>
-          
           <td>          
             <% department.employees.each do |employee| %>
-              <% if employee.positions.any? && employee.positions.last.name == @head_of_department %>
-                <%= department_decorator.head_of_department %>
+              <% if employee.positions.any?  %>
+                <%= employee.first_name %> <%= employee.last_name %>
               <% break %>
               <% end %>
             <% end %>            

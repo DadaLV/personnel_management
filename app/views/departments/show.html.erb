@@ -27,9 +27,8 @@
           <td><%= employee.home_address %></td>
           <td>
             <% if employee.positions.any? %>
-              <% if employee.positions.last.name == "Head of Department" %>
-                Head of Department
-              <% end %>
+              <%# <% if employee.positions.last.name == "Head of Department" %> 
+                <%= employee.head_of_department.name if employee.head_of_department %>
             <% end %>
           </td>
           <td><%= link_to "View Details", employee_path(employee), class: "btn btn-primary" %></td>

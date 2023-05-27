@@ -1,10 +1,9 @@
 class DepartmentsController < ApplicationController
-  include Constants
-
+ 
   before_action :set_department, only: [:show, :edit, :update, :destroy]
 
   def index
-    @head_of_department = HEAD_OF_DEPARTMENT
+    
     @departments = Department.all
   end
 
@@ -24,7 +23,7 @@ class DepartmentsController < ApplicationController
   end
 
   def show
-    @employees = @department.employees     
+    @employees = @department.employees.decorate   
   end
 
   def edit    

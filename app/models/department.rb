@@ -5,7 +5,13 @@ class Department < ApplicationRecord
   validates :abbreviation, presence: true, length: {minimum: 2, maximum: 5}
   validate :maximum_employees_limit
 
+  # def head_of_department
+  #     head_of_department = department.employees.positions.find_by(name: "Head of Department")
+  #     # "#{head_of_department.first_name}"
+  #   end
   private
+  
+ 
 
   def maximum_employees_limit
     if employees.count >= 10
