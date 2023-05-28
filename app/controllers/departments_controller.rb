@@ -1,5 +1,5 @@
 class DepartmentsController < ApplicationController
- 
+  include Draper::Decoratable
   before_action :set_department, only: [:show, :edit, :update, :destroy]
 
   def index

@@ -7,6 +7,8 @@
         <th scope="col">Department Name</th>
         <th scope="col">Department Abbreviation</th>
         <th scope="col">Number of Employees</th>
+        <th scope="col">Head of Department using model</th>
+        <th scope="col">Head of Department decorator</th>
         <th scope="col">Head of Department</th>
         <th colspan="3"></th>
       </tr>
@@ -17,6 +19,8 @@
           <td scope="row"><%= department.name %></td>
           <td><%= department.abbreviation %></td>
           <td><%= department.employees.count %></td>
+          <td><%= department.head_of_depa %></td>
+          <td><%= department.decorate.head_of_d %></td>
           <td>          
             <% department.employees.each do |employee| %>
               <% if employee.positions.any?  %>
