@@ -13,10 +13,10 @@ class PositionsController < ApplicationController
   end
 
   def create
-    @position = Position.new(position_params)
-    if @position.save
+    position = Position.new(position_params)
+    if position.save
       flash[:notice] = "Position was successfully created."
-      redirect_to @position
+      redirect_to position
     else
       render :new
     end
@@ -28,7 +28,7 @@ class PositionsController < ApplicationController
   def update
     if @position.update(position_params)
       flash[:notice] = "Position was successfully updated."
-      redirect_to @position, notice: 
+      redirect_to @position
     else
       render :edit
     end

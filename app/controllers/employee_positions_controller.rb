@@ -13,9 +13,9 @@ class EmployeePositionsController < ApplicationController
     position.save
   end
 
-    @employee_position = @employee.employee_positions.new(employee_position_params)
+    employee_position = @employee.employee_positions.new(employee_position_params)
 
-    if @employee_position.save
+    if employee_position.save
       flash[:notice] = "Position created successfully."
       redirect_to @employee
     else
