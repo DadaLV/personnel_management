@@ -7,13 +7,6 @@ class EmployeePositionsController < ApplicationController
   end
 
   def create
-    position = Position.find_or_initialize_by(id: employee_position_params[:position_id])
-
-  if position.new_record?
-    position.name = "New Position"
-    position.save
-  end
-
     employee_position = @employee.employee_positions.new(employee_position_params)
 
     if employee_position.save
