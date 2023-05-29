@@ -5,10 +5,11 @@ Rails.application.routes.draw do
   # root "articles#index"
   
   resources :employees do
-    resources :employee_positions, only: [:new, :create]
+    resources :employee_positions, only: [:new, :create, :edit, :update]
   end
   
   resources :positions
   resources :departments
+  resources :employee_positions
   
 end

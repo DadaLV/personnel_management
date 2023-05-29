@@ -52,7 +52,15 @@
           <ul class="col-sm-5">
             <% @employee.positions.each do |position| %>
               <ol class="list-group list-group-flus">
-                <li class="list-group-item"><%= position.name %> <%= position.salary %></li>
+                <li class="list-group-item">
+                    <%= position.name %> <%= position.salary %>
+                    <% employee_position = @employee.employee_positions.find_by(position_id: position.id) %>
+                    <% if employee_position %>
+                      Start Date: <%= employee_position.start_date %><br>
+                      End Date: <%= employee_position.end_date %>
+                      <%= link_to "Edit", class: "btn btn-light" %>
+                    <% end %>
+                  </li>
               </ol>
             <% end %>
           </ul>
