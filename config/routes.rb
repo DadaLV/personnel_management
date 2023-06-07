@@ -1,15 +1,12 @@
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Defines the root path route ("/")
-  # root "articles#index"
-  
   resources :employees do
-    resources :employee_positions, only: [:new, :create, :edit, :update]
+    resources :employee_positions, only: [:new, :create, :edit, :update], as: 'positions'
   end
-  
+
+  get '/employees/:id/positions', to: 'employee_positions#index', as: 'employee_positions_index'
+
   resources :positions
   resources :departments
-  resources :employee_positions
-  
+
+  get '/employees/:employee_id/employee_positions', to: redirect('/employees/%{employee_id}/positions')
 end

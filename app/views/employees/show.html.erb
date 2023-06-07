@@ -12,6 +12,7 @@
           <% else %>
           No current position
           <% end %></h6>
+          <%= link_to "View All Positions", employee_positions_path(employee_id: @employee.id), class: "btn btn-light" %>
           <table class="table table-hover table-bordered mt-4">
             <tbody>
               <tr>
@@ -34,7 +35,7 @@
           </table>
           <div class="row align-items-start">
             <div class="col">
-              <%= link_to "Edit Employee", edit_employee_path(@employee), class: "btn btn-light" %>
+              <%= link_to "Edit Employee", edit_employee(@employee), class: "btn btn-light" %>
             </div>
             <div class="col">
               <%= button_to employee_path(@employee), method: :delete, onclick: "return confirm('Are you sure?')", class: "btn btn-light", form: { class: "d-inline" } do %>
@@ -45,33 +46,10 @@
         </div>
       </div>
     </div>
-    <div class="col">
-
-      <h3>Positions</h3>
-        <% if @employee.positions.any? %>
-          <ul class="col-sm-5">
-            <% @employee.positions.each do |position| %>
-              <ol class="list-group list-group-flus">
-                <li class="list-group-item">
-                    <%= position.name %> <%= position.salary %>
-                    <% employee_position = @employee.employee_positions.find_by(position_id: position.id) %>
-                    <% if employee_position %>
-                      Start Date: <%= employee_position.start_date %><br>
-                      End Date: <%= employee_position.end_date %>
-                      <%= link_to "Edit", class: "btn btn-light" %>
-                    <% end %>
-                  </li>
-              </ol>
-            <% end %>
-          </ul>
-        <% else %>
-          <p>No positions found for this employee.</p>
-        <% end %>
-
-    </div>
+    
   </div>
   <div class="row-2 mt-2">
-    <%= link_to "Add Position", new_employee_employee_position_path(@employee), class: "btn btn-primary" %>
+    <%= link_to "Add Position", new_employee_position_path(@employee), class: "btn btn-primary" %>
     <%= link_to "Return to Employees List", employees_path, class: "btn btn-primary" %>
     <%= link_to "Return to Departmentss List", departments_path, class: "btn btn-primary" %>
   </div>

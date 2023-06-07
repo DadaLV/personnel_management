@@ -1,8 +1,20 @@
 class EmployeePositionsController < ApplicationController
-  before_action :set_employee
-  # before_action :set_employee_position, only: [:edit, :update]
+  include Draper::Decoratable
+  before_action :set_employee, only: [:create, :new]
+  before_action :set_employee_position, only: [:update]
+
+  def index
+    @employee = Employee.find(params[:id])
+    @employee_positions = @employee.employee_positions.decorate
+  end
+
+  def show
+    @employee = Employee.find(params[:id])
+    @employee_positions = @employee.employee_positions
+  end
 
   def new
+    @employee = Employee.find(params[:employee_id])
     @employee_position = @employee.employee_positions.new
   end
 
@@ -17,17 +29,20 @@ class EmployeePositionsController < ApplicationController
     end
   end
 
-  # def edit
-  # end
+  def edit
+    @employee_position = EmployeePosition.find(params[:id])
+    @employee = @employee_position.employee
+  end
 
-  # def update
-  #   if @employee_position.update(employee_position_params)
-  #     flash[:notice] = "Position updated successfully."
-  #     redirect_to @employee_position.employee
-  #   else
-  #     render :edit
-  #   end
-  # end
+  def update
+    @employee = Employee.find(params[:employee_id])
+    if @employee_position.update(employee_position_params)
+      flash[:notice] = "Position updated successfully."
+      redirect_to employee_path(@employee)
+    else
+      render :edit
+    end
+  end
 
   private
 
@@ -35,9 +50,10 @@ class EmployeePositionsController < ApplicationController
     @employee = Employee.find(params[:employee_id])
   end
 
-  # def set_employee_position
-  #   @employee_position = @employee.employee_positions.find(params[:id])  
-  # end
+  def set_employee_position
+    @employee_position = EmployeePosition.find_by(employee_id: params[:employee_id], id: params[:id])
+    redirect_to edit_employee_position_path(@employee_position.employee, @employee_position), alert: 'Employee position not found' unless @employee_position
+  end
 
   def employee_position_params
     params.require(:employee_position).permit(:position_id, :start_date, :end_date)
