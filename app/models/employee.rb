@@ -15,6 +15,10 @@ class Employee < ApplicationRecord
   validates :place_of_birth, presence: true, length: {minimum: 2, maximum: 30}
   validates :home_address, presence: true, length: {minimum: 2, maximum: 30}
   validate :department_employee_limit
+  
+    def full_name
+      "#{first_name} #{last_name}"
+    end
 
   private
 
