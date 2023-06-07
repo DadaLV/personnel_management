@@ -9,4 +9,5 @@ Rails.application.routes.draw do
   resources :departments
 
   get '/employees/:employee_id/employee_positions', to: redirect('/employees/%{employee_id}/positions')
+  get '/employees/:employee_id/employee_positions/new', to: redirect('/employees/%{employee_id}/positions/new')
 end

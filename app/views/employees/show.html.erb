@@ -35,7 +35,7 @@
           </table>
           <div class="row align-items-start">
             <div class="col">
-              <%= link_to "Edit Employee", edit_employee(@employee), class: "btn btn-light" %>
+              <%= link_to "Edit Employee", edit_employee_path(@employee), class: "btn btn-light" %>
             </div>
             <div class="col">
               <%= button_to employee_path(@employee), method: :delete, onclick: "return confirm('Are you sure?')", class: "btn btn-light", form: { class: "d-inline" } do %>
