@@ -28,7 +28,7 @@
           <td>
             <% if employee.positions.any? %>
                
-                <%= employee.head_of_department.name if employee.head_of_department %>
+                <%= employee.find_head_of_department.name if employee.find_head_of_department %>
             <% end %>
           </td>
           <td><%= link_to "View Details", employee_path(employee), class: "btn btn-primary" %></td>
