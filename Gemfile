@@ -48,6 +48,8 @@ gem 'faker'
 
 gem 'draper'
 
+gem 'will_paginate', '~> 4.0'
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 
