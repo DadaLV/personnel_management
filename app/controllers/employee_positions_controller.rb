@@ -35,11 +35,11 @@ class EmployeePositionsController < ApplicationController
   end
 
   def update
-    
     if @employee_position.update(employee_position_params)
       flash[:notice] = "Position updated successfully."
-      redirect_to employee_path(@employee)
+      redirect_to employee_path(@employee_position.employee)
     else
+      flash.now[:alert] = "Error updating position."
       render :edit
     end
   end
