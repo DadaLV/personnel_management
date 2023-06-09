@@ -1,6 +1,6 @@
 class EmployeesController < ApplicationController
   
-  before_action :set_employee, only: [:show, :edit, :update, :destroy]
+  before_action :set_employee, only: [:show, :edit, :destroy]
   
   def index
     @employees = Employee.order(first_name: :asc, last_name: :asc)
@@ -15,10 +15,10 @@ class EmployeesController < ApplicationController
   end
 
   def create
-    @employee = Employee.new(employee_params)
-    if @employee.save
+    employee = Employee.new(employee_params)
+    if employee.save
       flash[:notice] = "Employee was successfully created."
-      redirect_to @employee 
+      redirect_to employee 
     else
       render :new
     end
@@ -28,9 +28,10 @@ class EmployeesController < ApplicationController
   end
 
   def update
-    if @employee.update(employee_params)
+    employee = Employee.find(params[:id])
+    if employee.update(employee_params)
       flash[:notice] = "Position was successfully updated."
-      redirect_to @employee
+      redirect_to employee
     else
       render :edit
     end
