@@ -14,9 +14,8 @@ class EmployeePositionDecorator < Draper::Decorator
       years
     end
   end
-
+  
   def total_salary
-    years_worked = years_on_position
-    (position.salary * (1 + 0.012 * years_worked)).round
+    (position.salary * (EmployeePosition::INITIAL_COEFFICIENT + EmployeePosition::SALARY_COEFFICIENT * years_on_position)).round
   end
 end
