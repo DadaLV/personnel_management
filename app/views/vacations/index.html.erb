@@ -16,8 +16,8 @@
           <td><%= index + 1 %></td>
           <td><%= vacation.employee.first_name %></td>
           <td><%= vacation.position&.name %></td>
-          <td><%= vacation.vacation_period %></td>
-          <td><%= vacation.used_vacation_days %></td>
+          <td><%= vacation.decorate.vacation_period %></td>
+          <td><%= vacation.decorate.used_vacation_days %></td>
         </tr>
       <% end %>
     </tbody>

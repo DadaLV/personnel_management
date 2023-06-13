@@ -1,4 +1,6 @@
-class Vacation < ApplicationRecord
+class Vacation < ApplicationRecord  
+
+  MAX_SIMULTANEOUS_VACATIONS = 5
 
   belongs_to :employee
   belongs_to :position
@@ -8,14 +10,6 @@ class Vacation < ApplicationRecord
   validates :position_id, presence: true
   validate :end_date_after_start_date
   validate :validate_department_vacation_limit
-
-  def vacation_period
-    end_date.present? ? "#{start_date} - #{end_date}" : "#{start_date} - "
-  end
-
-  def used_vacation_days
-    (end_date - start_date + 1).to_i
-  end
 
   private
 
@@ -34,7 +28,7 @@ class Vacation < ApplicationRecord
                                    .or(Vacation.where(end_date: start_date..end_date))
                                    .count
   
-    if same_time_vacations > 5
+    if same_time_vacations > Vacation::MAX_SIMULTANEOUS_VACATIONS
       errors.add(:base, "Maximum number of employees on vacation reached for this department.")
     end
   end
