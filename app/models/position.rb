@@ -1,4 +1,7 @@
 class Position < ApplicationRecord
+  
+  HEAD_OF_DEPARTMENT = 'Head of Department'
+
   has_many :employee_positions, dependent: :destroy
   has_many :employees, through: :employee_positions
   has_many :vacations
