@@ -1,10 +1,12 @@
 class Employee < ApplicationRecord
+  scope :for_department, ->(department_id) { where(department_id: department_id) }
+  MAXIMUM_NUMBER_OF_EMPLOYEES_IN_DEPARTMENT = 10
+  
   has_many :employee_positions, dependent: :destroy
   has_many :positions, through: :employee_positions
   has_many :vacations, dependent: :destroy
   belongs_to :department
 
-  scope :for_department, ->(department_id) { where(department_id: department_id) }
     
   validates :first_name, presence: true, length: {minimum: 2, maximum: 30}
   validates :middle_name, allow_blank: true, length: {minimum: 2, maximum: 30}
@@ -19,7 +21,7 @@ class Employee < ApplicationRecord
     def full_name
       "#{first_name} #{last_name}"
     end
-
+    
   private
 
   def date_of_birth_not_younger_than_15_years
@@ -28,11 +30,10 @@ class Employee < ApplicationRecord
     end
   end
 
-  MAXIMUM_NUMBER_OF_EMPLOYEES = 10
 
   def department_employee_limit
-    if department.employees.count >= MAXIMUM_NUMBER_OF_EMPLOYEES
-      errors.add(:base, "Maximum number of employees (#{MAXIMUM_NUMBER_OF_EMPLOYEES}) reached for this department.")
+    if department.employees.count >= Employee::MAXIMUM_NUMBER_OF_EMPLOYEES_IN_DEPARTMENT
+      errors.add(:base, "Maximum number of employees (#{Employee::MAXIMUM_NUMBER_OF_EMPLOYEES_IN_DEPARTMENT}) reached for this department.")
     end
   end
 
