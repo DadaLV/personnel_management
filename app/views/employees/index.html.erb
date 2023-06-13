@@ -11,6 +11,9 @@
       
     <% end %>      
   </div>
+  
+<%= link_to "New Employee", new_employee_path(department_id: @department_id), class: "btn btn-primary mb-4" %>
+
   <% if @employees.present? %>
     <table class="table table-hover table-striped table-bordered">
       <thead>
@@ -45,5 +48,4 @@
     <p>No employees found for this department.</p>
   <% end %>
   
-<%= link_to "New Employee", new_employee_path(department_id: @department_id), class: "btn btn-primary" %>
 </div>
