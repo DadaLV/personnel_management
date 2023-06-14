@@ -1,20 +1,18 @@
 class EmployeePositionsController < ApplicationController
   include Draper::Decoratable
-  before_action :set_employee, only: [:create, :new, :update]
+  before_action :set_employee, only: [:create, :new, :update, :index, :show]
   before_action :set_employee_position, only: [:update]
 
   def index
-    @employee = Employee.find(params[:id])
     @employee_positions = @employee.employee_positions.decorate
   end
 
   def show
-    @employee = Employee.find(params[:id])
+    
     @employee_positions = @employee.employee_positions
   end
 
-  def new
-    
+  def new    
     @employee_position = @employee.employee_positions.new
   end
 
@@ -30,7 +28,7 @@ class EmployeePositionsController < ApplicationController
   end
 
   def edit
-    @employee_position = EmployeePosition.find(params[:id])
+    @employee_position = EmployeePosition.find(params[:id]) 
     @employee = @employee_position.employee
   end
 
@@ -47,7 +45,7 @@ class EmployeePositionsController < ApplicationController
   private
 
   def set_employee
-    @employee = Employee.find(params[:employee_id])
+    @employee = Employee.find(params[:employee_id] || params[:id])
   end
 
   def set_employee_position
