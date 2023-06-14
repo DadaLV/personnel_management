@@ -1,0 +1,26 @@
+<div class="container m-4">
+  <h1>Vacations list</h1>
+  <table class="table table-hover table-striped table-bordered">
+    <thead>
+      <tr>
+        <th scope="col"></th>
+        <th scope="col">Employee</th>
+        <th scope="col">Position</th>
+        <th scope="col">Vacation Period</th>
+        <th scope="col">Used Vacation Days</th>        
+      </tr>
+    </thead>
+    <tbody>
+      <% @vacations.each_with_index do |vacation, index| %>
+        <tr>
+          <td><%= index + 1 %></td>
+          <td><%= vacation.employee.first_name %></td>
+          <td><%= vacation.position&.name %></td>
+          <td><%= vacation.decorate.vacation_period %></td>
+          <td><%= vacation.decorate.used_vacation_days %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= will_paginate @vacations, class: 'pagination justify-content-center' %>
+</div>

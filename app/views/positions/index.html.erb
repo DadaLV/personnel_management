@@ -1,0 +1,29 @@
+<div class="container m-4">
+  <h1>Positions</h1>
+
+  <table class="table table-hover table-striped table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Salary</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @positions.each do |position| %>
+        <tr>
+          <td scope="row"><%= position.name %></td>
+          <td><%= position.salary %></td>
+          <td><%= link_to "Show", position, class: "btn btn-primary" %></td>
+          <td><%= button_to position_path(position), method: :delete, onclick: "return confirm('Are you sure?')", class: "btn btn-danger", form: { class: "d-inline" } do %>
+      Destroy
+    <% end %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+
+  <%= link_to "New Position", new_position_path, class: "btn btn-primary" %>
+<div>

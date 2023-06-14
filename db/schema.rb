@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_15_082852) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_09_005609) do
   create_table "departments", force: :cascade do |t|
     t.string "name"
     t.string "abbreviation"
@@ -23,6 +23,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_15_082852) do
     t.integer "position_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.date "start_date"
+    t.date "end_date"
     t.index ["employee_id"], name: "index_employee_positions_on_employee_id"
     t.index ["position_id"], name: "index_employee_positions_on_position_id"
   end
@@ -46,6 +48,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_15_082852) do
     t.decimal "salary"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "vacation_days", default: 24
+    t.integer "employee_id"
+    t.index ["employee_id"], name: "index_positions_on_employee_id"
   end
 
   create_table "vacations", force: :cascade do |t|
@@ -54,11 +59,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_15_082852) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "employee_id", null: false
+    t.integer "position_id"
     t.index ["employee_id"], name: "index_vacations_on_employee_id"
+    t.index ["position_id"], name: "index_vacations_on_position_id"
   end
 
   add_foreign_key "employee_positions", "employees"
   add_foreign_key "employee_positions", "positions"
   add_foreign_key "employees", "departments"
+  add_foreign_key "positions", "employees"
   add_foreign_key "vacations", "employees"
 end

@@ -1,0 +1,20 @@
+<div class="container m-4">
+<h2>Position Details</h2>
+  <p>
+    <strong>Name:</strong>
+    <%= @position.name %>
+  </p>
+
+  <p>
+    <strong>Salary:</strong>
+    <%= @position.salary %>
+  </p>
+
+  <br>
+
+  <%= link_to "Edit", edit_position_path(@position), class: "btn btn-primary" %>
+  <%= button_to position_path(@position), method: :delete, onclick: "return confirm('Are you sure?')", class: "btn btn-light", form: { class: "d-inline" } do %>
+                Delete Position
+  <% end %> 
+  <%= link_to "Back", positions_path, class: "btn btn-primary" %>
+</div>
