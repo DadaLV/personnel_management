@@ -19,8 +19,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_09_005609) do
   end
 
   create_table "employee_positions", force: :cascade do |t|
-    t.integer "employee_id", null: false
-    t.integer "position_id", null: false
+    t.integer "employee_id"
+    t.integer "position_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.date "start_date"
@@ -39,13 +39,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_09_005609) do
     t.string "home_address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "department_id", null: false
+    t.integer "department_id"
     t.index ["department_id"], name: "index_employees_on_department_id"
   end
 
   create_table "positions", force: :cascade do |t|
     t.string "name"
-    t.decimal "salary"
+    t.integer "salary"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "vacation_days", default: 24
@@ -56,17 +56,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_09_005609) do
   create_table "vacations", force: :cascade do |t|
     t.date "start_date"
     t.date "end_date"
+    t.integer "employee_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "employee_id", null: false
     t.integer "position_id"
     t.index ["employee_id"], name: "index_vacations_on_employee_id"
     t.index ["position_id"], name: "index_vacations_on_position_id"
   end
 
-  add_foreign_key "employee_positions", "employees"
-  add_foreign_key "employee_positions", "positions"
-  add_foreign_key "employees", "departments"
   add_foreign_key "positions", "employees"
-  add_foreign_key "vacations", "employees"
 end
