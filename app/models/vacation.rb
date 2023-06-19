@@ -2,8 +2,8 @@ class Vacation < ApplicationRecord
 
   MAX_SIMULTANEOUS_VACATIONS = 5
 
-  belongs_to :employee
-  belongs_to :position
+  belongs_to :employee, required: true
+  belongs_to :position, optional: true
   
   validates :start_date, presence: true
   validates :end_date, presence: true
@@ -13,6 +13,7 @@ class Vacation < ApplicationRecord
   private
 
   def end_date_after_start_date
+   return unless start_date && end_date
    if end_date < start_date
       errors.add(:end_date, "must be after the start date")
     end
