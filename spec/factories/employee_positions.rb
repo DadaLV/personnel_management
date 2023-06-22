@@ -14,6 +14,5 @@ FactoryBot.define do
     trait :with_position do
       association :position
     end
-
   end
 end
