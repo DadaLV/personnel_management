@@ -6,6 +6,5 @@ FactoryBot.define do
     
     employee
     position
-
   end
 end
