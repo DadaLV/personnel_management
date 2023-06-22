@@ -32,7 +32,7 @@ class Employee < ApplicationRecord
 
 
   def department_employee_limit
-    if department.employees.count >= Employee::MAXIMUM_NUMBER_OF_EMPLOYEES_IN_DEPARTMENT
+    if department.present? && department.employees.for_department(department_id).count >= Employee::MAXIMUM_NUMBER_OF_EMPLOYEES_IN_DEPARTMENT
       errors.add(:base, "Maximum number of employees (#{Employee::MAXIMUM_NUMBER_OF_EMPLOYEES_IN_DEPARTMENT}) reached for this department.")
     end
   end
