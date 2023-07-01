@@ -11,4 +11,6 @@ Rails.application.routes.draw do
 
   get '/employees/:employee_id/employee_positions', to: redirect('/employees/%{employee_id}/positions')
   get '/employees/:employee_id/employee_positions/new', to: redirect('/employees/%{employee_id}/positions/new')
+
+  post '/language', to: 'application#set_language', as: :set_language
 end

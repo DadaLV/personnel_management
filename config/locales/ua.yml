@@ -28,6 +28,13 @@ ua:
         many: "Знайдено %{count} помилок:"
         other: "Знайдено %{count} помилки:"
       prohibited_saving: "не може бути збережено"
+
+  layouts:    
+    navbar:
+      employees: "Працівники"
+      departments: "Департаменти"
+      positions: "Посади"
+      vacations: "Відпустки"
   
   departments:
 
@@ -79,7 +86,7 @@ ua:
       view_details: "Детальніше"
       employees_list: "Перейти до списку працівників"
       departments_list: "Перейти до списку департаментів"
-      
+
     form:
       submit: "Зберегти"
       name: "Назва департаменту"
