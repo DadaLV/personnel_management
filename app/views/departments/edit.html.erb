@@ -1,4 +1,4 @@
 <div class="conainer m-4">
-  <h1>Edit <%= @department.name %></h1>
+  <h1><%= t('.edit_department', department_name: @department.name) %></h1>
   <%= render 'form', department: @department %>
 </div>

@@ -1,0 +1,94 @@
+ua:
+  errors:
+    format: "%{message}"
+  activerecord:
+    errors:
+      template:
+        header:
+          one: "Помилка у збереженні %{model}: 1 помилка"
+          few: "Помилка у збереженні %{model}: %{count} помилки"
+          many: "Помилка у збереженні %{model}: %{count} помилок"
+          other: "Помилка у збереженні %{model}: %{count} помилки"
+      models:
+        department:
+          attributes:
+            name:
+              blank: "Назва не може бути порожньою"
+              too_short: "Назва занадто коротка (мінімум %{count} символа)"
+              too_long: "Назва занадто довга (максимум %{count} символів)"
+            abbreviation:
+              blank: "Абревіатура не може бути порожньою"
+              too_short: "Абревіатура занадто коротка (мінімум %{count} символа)"
+              too_long: "Абревіатура занадто довга (максимум %{count} символів)"
+  shared:
+    error_messages:
+      errors: 
+        one: "Знайдена одна помилка:"
+        few: "Знайдено %{count} помилки:"
+        many: "Знайдено %{count} помилок:"
+        other: "Знайдено %{count} помилки:"
+      prohibited_saving: "не може бути збережено"
+  
+  departments:
+
+    index:
+      departments: "Департаменти"
+      department_name: "Назва департаменту"
+      department_abbreviation: "Абревіатура департаменту"
+      number_of_employees: "Кількість працівників"
+      head_of_department: "Керівник департаменту"
+      show: "Показати"
+      edit: "Редагувати"
+      delete: "Видалити"
+      create_department: "Створити департамент"
+      employee_list: "Список працівників департаменту"
+      hi: "ukraine"
+
+    create:
+      success: "Відділ було успішно створено."
+      name: "Назва департаменту"
+      abbreviation: "Абревіатура департаменту"
+      create_department: "Створити департамент"
+
+    edit:
+      edit_department: "Редагувати %{department_name} департамент"
+
+    update:
+      success: "Відділ було успішно оновлено."
+
+    destroy:
+      success: "Відділ було успішно видалено."
+
+    new:      
+      name: "Назва департаменту"
+      abbreviation: "Абревіатура департаменту"
+      create_department: "Створити департамент"
+      employees_list: "Перейти до списку працівників"
+      departments_list: "Перейти до списку департаментів"
+
+    show:
+      employee_list: "Список працівників"
+      first_name: "Ім'я"
+      middle_name: "По-батькові"
+      last_name: "Прізвище"
+      passport_data: "Паспорт"
+      date_of_birth: "Дата народження"
+      place_of_birth: "Місце народження"
+      home_adress: "Адреса проживання"
+      head_of_department: "Керівник департаменту"
+      view_details: "Детальніше"
+      employees_list: "Перейти до списку працівників"
+      departments_list: "Перейти до списку департаментів"
+      
+    form:
+      submit: "Зберегти"
+      name: "Назва департаменту"
+      abbreviation: "Абревіатура департаменту"
+      employees_list: "Перейти до списку працівників"
+      departments_list: "Перейти до списку департаментів"
+
+
+
+
+
+      

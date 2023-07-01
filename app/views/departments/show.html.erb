@@ -1,17 +1,17 @@
 <div class="conainer m-4">
-<h1>The list of Employees of <%= @department.name %></h1> 
+<h1><%= t('.employee_list', department_name: @department.name) %></h1> 
   <table class="table table-hover table-striped table-bordered">
     <thead>
       <tr>
         <th>ID</th>
-        <th scope="col">First Name</th>
-        <th scope="col">Middle Name</th>
-        <th scope="col">Last Name</th>
-        <th scope="col">Passport Data</th>
-        <th scope="col">Date of Birth</th>
-        <th scope="col">Place of Birth</th>
-        <th scope="col">Home Adress</th>
-        <th scope="col">Head of department</th>
+        <th scope="col"><%= t('.first_name') %></th>
+        <th scope="col"><%= t('.middle_name') %></th>
+        <th scope="col"><%= t('.last_name') %></th>
+        <th scope="col"><%= t('.passport_data') %></th>
+        <th scope="col"><%= t('.date_of_birth') %></th>
+        <th scope="col"><%= t('.place_of_birth') %></th>
+        <th scope="col"><%= t('.home_adress') %></th>
+        <th scope="col"><%= t('.head_of_department') %></th>
       </tr>
     </thead>
     <tbody>
@@ -31,11 +31,11 @@
                 <%= employee.find_head_of_department.name if employee.find_head_of_department %>
             <% end %>
           </td>
-          <td><%= link_to "View Details", employee_path(employee), class: "btn btn-primary" %></td>
+          <td><%= link_to t('.view_details'), employee_path(employee), class: "btn btn-primary" %></td>
         </tr>
       <% end %>
     </tbody>
   </table>
-  <%= link_to "Go to Employees List", employees_path, class: "btn btn-primary mt-4" %>
-  <%= link_to "Go to Departments List", departments_path, class: "btn btn-primary mt-4" %>
+  <%= link_to t('.employees_list'), employees_path, class: "btn btn-primary mt-4" %>
+  <%= link_to t('.departments_list'), departments_path, class: "btn btn-primary mt-4" %>
 </div>

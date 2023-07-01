@@ -15,7 +15,7 @@ class DepartmentsController < ApplicationController
     @department = Department.new(department_params)
 
     if @department.save
-      flash[:notice] = "Department was successfully created."
+      flash[:notice] = I18n.t('department.create.success')
       redirect_to @department
     else
       render :new
@@ -31,7 +31,7 @@ class DepartmentsController < ApplicationController
 
   def update
     if @department.update(department_params)
-      flash[:notice] = "Department was successfully updated."
+      flash[:notice] = I18n.t('department.update.success')
       redirect_to @department
     else
       render :edit
@@ -40,7 +40,7 @@ class DepartmentsController < ApplicationController
 
   def destroy
     @department.destroy
-    flash[:notice] = "Department was successfully destroyed."
+    flash[:notice] = I18n.t('department.destroy.success')
     redirect_to departments_url
   end
 
