@@ -2,44 +2,43 @@
   <div class="row">
     <div class="col-4">
 
-      <h2>Employee Details</h2>
+      <h2><%= t('.employee_details') %></h2>
       <div class="card" style="width: 18rem;">
       <div class="card-body">
         <h5 class="card-title"><%= @employee.first_name %> <%= @employee.middle_name %> <%= @employee.last_name %></h5>
         <h6 class="card-subtitle mb-2 text-body-secondary mt-2">
-          <% if @employee.positions.any? %>
-        Current position: <%= @employee.positions.last.name %>
+          <% if @employee.positions.any? %><%= t('.current_position') %>: <%= @employee.positions.last.name %>
           <% else %>
-          No current position
+          <%= t('.no_current_position') %>
           <% end %></h6>
-          <%= link_to "View All Positions", employee_positions_path(employee_id: @employee.id), class: "btn btn-light" %>
+          <%= link_to t('button.view_positions_history'), employee_positions_path(employee_id: @employee.id), class: "btn btn-light" %>
           <table class="table table-hover table-bordered mt-4">
             <tbody>
               <tr>
-                <th>Passport Data</th>
+                <th><%= t('passport_data') %></th>
                 <th><%= @employee.passport_data %></th>
               </tr>
               <tr>
-                <th>Date of Birth</th>
+                <th><%= t('date_of_birth') %></th>
                 <th><%= @employee.date_of_birth %></th>
               </tr>
               <tr>
-                <th>Place of Birth</th>
+                <th><%= t('place_of_birth') %></th>
                 <th><%= @employee.place_of_birth %></th>
               </tr>
               <tr>
-                <th>Home Adress</th>
+                <th><%= t('home_adress') %></th>
                 <th><%= @employee.home_address %></th>
               </tr>
             </tbody>
           </table>
           <div class="row align-items-start">
             <div class="col">
-              <%= link_to "Edit Employee", edit_employee_path(@employee), class: "btn btn-light" %>
+              <%= link_to t('button.edit'), edit_employee_path(@employee), class: "btn btn-light" %>
             </div>
             <div class="col">
-              <%= button_to employee_path(@employee), method: :delete, onclick: "return confirm('Are you sure?')", class: "btn btn-light", form: { class: "d-inline" } do %>
-                Delete Employee
+              <%= button_to employee_path(@employee), method: :delete, onclick: "return confirm('#{t('confirmations.are_you_sure')}')", class: "btn btn-light", form: { class: "d-inline" } do %>
+                <%= t('button.delete') %>
               <% end %>
             </div>
           </div>
@@ -49,8 +48,8 @@
     
   </div>
   <div class="row-2 mt-2">
-    <%= link_to "Add Position", new_employee_position_path(@employee), class: "btn btn-primary" %>
-    <%= link_to "Return to Employees List", employees_path, class: "btn btn-primary" %>
-    <%= link_to "Return to Departmentss List", departments_path, class: "btn btn-primary" %>
+    <%= link_to t('button.add_position'), new_employee_position_path(@employee), class: "btn btn-primary" %>
+    <%= link_to t('button.employees_list'), employees_path, class: "btn btn-primary" %>
+    <%= link_to t('button.departments_list'), departments_path, class: "btn btn-primary" %>
   </div>
 </div>

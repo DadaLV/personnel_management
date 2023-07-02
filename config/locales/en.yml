@@ -30,6 +30,25 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  departments:
-    form:
-      submit: "Submit"    
+  button:
+    show_employees: "Show Employees"
+    submit: "Submit"
+
+  confirmations:
+    are_you_sure: "Are you sure?" 
+
+  employees:
+    index:
+      no_employee_found: "No employee found for this department"   
+
+  activerecord:
+    errors:
+      models:
+        employee:
+          attributes:
+            date_of_birth:
+              date_of_birth_not_younger_than_15_years: "- Employee must be at least 15 years old"
+            base:
+              department_employee_limit: "Maximum number of employees (%{count}) reached for this department."
+  
+          

@@ -3,43 +3,43 @@
     <div class="row">
       <div class="col">
         <div class="form-group">
-          <%= form.label :first_name %>
+          <%= form.label :first_name, t('first_name') %>
           <%= form.text_field :first_name, class: "form-control" %>
         </div>
         <div class="form-group">
-          <%= form.label :middle_name %>
+          <%= form.label :middle_name, t('middle_name') %>
           <%= form.text_field :middle_name, class: "form-control" %>
         </div>
         <div class="form-group">
-          <%= form.label :last_name %>
+          <%= form.label :last_name, t('last_name') %>
           <%= form.text_field :last_name, class: "form-control" %>
         </div>
         <div class="form-group">
-          <%= form.label :passport_data %>
+          <%= form.label :passport_data, t('passport_data') %>
           <%= form.text_field :passport_data, class: "form-control" %>
         </div>
         <div class="form-group">
-          <%= form.label :date_of_birth %>
+          <%= form.label :date_of_birth, t('date_of_birth') %>
           <%= form.date_field :date_of_birth, class: "form-control" %>
         </div>
       </div>
       <div class="col">
         <div class="form-group">
-          <%= form.label :place_of_birth %>
+          <%= form.label :place_of_birth, t('place_of_birth') %>
           <%= form.text_field :place_of_birth, class: "form-control" %>
         </div>
         <div class="form-group">
-          <%= form.label :home_address %>
+          <%= form.label :home_address, t('home_adress') %>
           <%= form.text_field :home_address, class: "form-control" %>
         </div>
         <div class="form-group">
-          <%= form.label :department_id %>
+          <%= form.label :department_id, t('department') %>
           <%= form.collection_select :department_id, Department.all, :id, :name, { include_blank: true }, class: "form-control" %>
         </div>
 
         <div class="form-group">
-          <%= form.submit "Submit", class: "btn btn-primary" %>
-          <%= link_to "Cancel", employees_path, class: "btn btn-secondary" %>
+          <%= form.submit t('button.submit'), class: "btn btn-primary mt-4" %>
+          <%= link_to t('button.cancel'), employees_path, class: "btn btn-secondary mt-4" %>
         </div>
       </div>
     </div>

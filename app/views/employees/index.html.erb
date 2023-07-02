@@ -1,31 +1,31 @@
 <div class="container m-4">
 
-  <h1>The list of Employees</h1>
+  <h1><%= t('.the_list_of_employees') %></h1>
   
-  <h3>Sort by Department</h3>
+  <h3><%= t('.sort_by_department') %></h3>
   <div class="form-group mb-4 col-sm-6">    
     <%= form_with(url: employees_path, method: :get) do |form| %>
       
-        <%= form.collection_select :department_id, Department.all, :id, :name, prompt: "Select Department", class: "form-select form-select-lg mb-6" %>
-        <%= form.submit "Show Employees", class: "btn btn-primary" %>
+        <%= form.collection_select :department_id, Department.all, :id, :name, prompt: t('employees.index.select.select_department'), class: "form-select form-select-lg mb-6" %>
+        <%= form.submit t('button.show_employees'), class: "btn btn-primary" %>
       
     <% end %>      
   </div>
   
-<%= link_to "New Employee", new_employee_path(department_id: @department_id), class: "btn btn-primary mb-4" %>
+<%= link_to t('button.new_employee'), new_employee_path(department_id: @department_id), class: "btn btn-primary mb-4" %>
 
   <% if @employees.present? %>
     <table class="table table-hover table-striped table-bordered">
       <thead>
         <tr>
           <th>ID</th>
-          <th scope="col">First Name</th>
-          <th scope="col">Middle Name</th>
-          <th scope="col">Last Name</th>
-          <th scope="col">Passport Data</th>
-          <th scope="col">Date of Birth</th>
-          <th scope="col">Place of Birth</th>
-          <th scope="col">Home Adress</th>
+          <th scope="col"><%= t('first_name') %></th>
+          <th scope="col"><%= t('middle_name') %></th>
+          <th scope="col"><%= t('last_name') %></th>
+          <th scope="col"><%= t('passport_data') %></th>
+          <th scope="col"><%= t('date_of_birth') %></th>
+          <th scope="col"><%= t('place_of_birth') %></th>
+          <th scope="col"><%= t('home_adress') %></th>
         </tr>
       </thead>
       <tbody>
@@ -39,13 +39,13 @@
             <td><%= employee.date_of_birth %></td>
             <td><%= employee.place_of_birth %></td>
             <td><%= employee.home_address %></td>
-            <td><%= link_to "View Position", employee_path(employee), class: "btn btn-primary" %></td>
+            <td><%= link_to t('button.view_position'), employee_path(employee), class: "btn btn-primary" %></td>
           </tr>
         <% end %>
       </tbody>
     </table>
   <% else %>
-    <p>No employees found for this department.</p>
+    <p><%= t('.no_employee_found') %></p>
   <% end %>
   
 </div>
