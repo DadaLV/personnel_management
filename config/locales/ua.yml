@@ -15,6 +15,8 @@ ua:
     view_positions_history: "Переглянути історію посад"
     add_position: "Додати посаду"
     cancel: "Скасувати"
+    back: "Повернутися"
+    new_position: "Створити посаду"
   
   first_name: "Ім'я"
   middle_name: "По-батькові"
@@ -85,7 +87,17 @@ ua:
               too_long: "Адреса проживання занадто довга (максимум %{count} символів)"
             base:
               department_employee_limit: "Досягнуто максимальну кількість працівників (%{count}) для цього відділу."
-            
+
+        position:
+          attributes:
+            name:
+              blank: "Назва не може бути порожньою"
+              too_short: "Назва занадто коротка (мінімум %{count} символа)"
+              too_long: "Назва занадто довга (максимум %{count} символів)"
+            salary:
+              not_a_number: "Зарплата повинна бути числом"
+              greater_than: "Зарплата повинна бути більшою за %{count}"
+              
   shared:
     error_messages:
       errors: 
@@ -142,17 +154,41 @@ ua:
       no_employee_found: "У цьому відділі нема працівників"
       select:
         select_department: "Виберіть відділ"
-
     show:
       employee_details: "Картка працівника"
       current_position: "Поточна посада"
       no_current_position: "Працівник не має посади"
-
     edit:
       edit_employee: "Редагувати дані працівника"
-
     new:
       new_employee: "Новий працівник"
+    create:
+      success: "Працівника було успішно створено."    
+    update:
+      success: "Працівника було успішно оновлено."
+    destroy:
+      success: "Працівника було успішно видалено."
+  
+  positions:
+    index:
+      positions: "Посади"
+      name: "Назва посади"
+      salary: "Зарплата"
+    new:
+      new_position: "Створити посаду"
+    create:
+      success: "Посаду було успішно створено."    
+    update:
+      success: "Посаду було успішно оновлено."
+    destroy:
+      success: "Посаду було успішно видалено."
+    form:
+      name: "Назва посади"
+      salary: "Зарплата"
+    edit:
+      edit_position: "Редагувати посаду"
+    show:
+      position_details: "Деталі посади"
       
       
       

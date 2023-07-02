@@ -1,6 +1,6 @@
 <div class="container m-4">
-  <h1>New Position</h1>
-  <%= render 'form', position: @position %>
+  <h1><%= t('.new_position') %></h1>
+  <%= render 'form' %>
   <br>
-  <%= link_to 'Back', :back, class: 'btn btn-primary' %>
+  <%= link_to t('button.back'), :back, class: 'btn btn-primary' %>
 </div>
