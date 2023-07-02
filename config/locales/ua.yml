@@ -108,7 +108,19 @@ ua:
             start_date:
               start_date_before_end_date: "Початкова дата повинна бути раніше за кінцеву дату"
               end_date_requires_start_date: "Початкова дата повинна бути вказана, якщо вказана кінцева дата"
-          
+
+        vacation:
+          attributes:
+            employee:
+              required: "Працівник не заначений"
+            start_date:
+              blank: "Початкова дата не може бути порожньою"
+            end_date:
+              blank: "Кінцевава дата не може бути порожньою"
+              end_date_after_start_date: "Кінцева дата має бути пізніше початкової"
+            base:
+              validate_department_vacation_limit: "Максимальна кількість працівників, що є у відпустці в даному періоді, досягнула максимуму для цього департаменту"
+
   shared:
     error_messages:
       errors: 
@@ -217,6 +229,14 @@ ua:
       add_employee_position: "Додати посаду працівнику"
     form:
       please_select: "Будь ласка оберіть"
+
+  vacations:
+    index:
+      list_of_vacations: "Список відпусток"
+      employee: "Працівник"
+      position: "Посада"
+      vacation_period: "Дати відпустки"
+      used_vacation_days: "Використаних днів відпустки"
       
 
       

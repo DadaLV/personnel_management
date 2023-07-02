@@ -55,5 +55,11 @@ en:
             start_date:
                 start_date_before_end_date: "must be earlier than the end date"
                 end_date_requires_start_date: "must be present if there is the end date"
+        vacation:
+          attributes:
+            end_date:
+              end_date_after_start_date: "must be after the start date"
+            base:
+              validate_department_vacation_limit: "Maximum number of employees on vacation reached for this department."
   
           

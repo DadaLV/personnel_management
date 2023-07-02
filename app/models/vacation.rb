@@ -15,7 +15,7 @@ class Vacation < ApplicationRecord
   def end_date_after_start_date
    return unless start_date && end_date
    if end_date < start_date
-      errors.add(:end_date, "must be after the start date")
+      errors.add(:end_date, :end_date_after_start_date)
     end
   end
 
@@ -29,7 +29,7 @@ class Vacation < ApplicationRecord
                                    .count
   
     if same_time_vacations > Vacation::MAX_SIMULTANEOUS_VACATIONS
-      errors.add(:base, "Maximum number of employees on vacation reached for this department.")
+      errors.add(:base, :validate_department_vacation_limit)
     end
   end
 
