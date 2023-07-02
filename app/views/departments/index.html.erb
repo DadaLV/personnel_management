@@ -1,6 +1,5 @@
 <div class="conainer m-4">
   <h1><%= t('.departments') %></h1>
-  <h2><%= t('.hi') %></h2>
   
   <table class="table table-hover table-striped table-bordered">
     <thead>
@@ -8,7 +7,7 @@
         <th scope="col"><%= t('.department_name') %></th>
         <th scope="col"><%= t('.department_abbreviation') %></th>
         <th scope="col"><%= t('.number_of_employees') %></th>
-        <th scope="col"><%= t('.head_of_department') %></th>
+        <th scope="col"><%= t('head_of_department') %></th>
         <th colspan="3"></th>
       </tr>
     </thead>
@@ -19,10 +18,10 @@
           <td><%= department.abbreviation %></td>
           <td><%= department.employees.count %></td>          
           <td><%= department.decorate.head_of_department %></td>
-          <td><%= link_to t('.show'), department, class: "btn btn-primary" %></td>
-          <td><%= link_to t('.edit'), edit_department_path(department), class: "btn btn-primary" %></td>
-          <td><%= button_to department_path(department), method: :delete, onclick: "return confirm('Are you sure?')", class: "btn btn-danger", form: { class: "d-inline" } do %>
-            <%= t('.delete') %>
+          <td><%= link_to t('button.show'), department, class: "btn btn-primary" %></td>
+          <td><%= link_to t('button.edit'), edit_department_path(department), class: "btn btn-primary" %></td>
+          <td><%= button_to department_path(department), method: :delete, onclick: "return confirm('#{t('confirmations.are_you_sure')}')", class: "btn btn-danger", form: { class: "d-inline" } do %>
+            <%= t('button.delete') %>
           <% end %></td>
         </tr>
       <% end %>
@@ -31,5 +30,5 @@
 
   <br>
 
-  <%= link_to t('.create_department'), new_department_path, class: "btn btn-primary" %>
+  <%= link_to t('button.create_department'), new_department_path, class: "btn btn-primary" %>
 </div>
