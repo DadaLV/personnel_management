@@ -20,7 +20,7 @@ class EmployeePositionsController < ApplicationController
     employee_position = @employee.employee_positions.new(employee_position_params)
 
     if employee_position.save
-      flash[:notice] = "Position created successfully."
+      flash[:notice] = I18n.t('employee_position.create.success')
       redirect_to @employee
     else
       render :new
@@ -34,7 +34,7 @@ class EmployeePositionsController < ApplicationController
 
   def update
     if @employee_position.update(employee_position_params)
-      flash[:notice] = "Position updated successfully."
+      flash[:notice] = I18n.t('employee_position.update.success')
       redirect_to employee_path(@employee_position.employee)
     else
       flash.now[:alert] = "Error updating position."

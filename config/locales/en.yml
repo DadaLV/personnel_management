@@ -50,5 +50,10 @@ en:
               date_of_birth_not_younger_than_15_years: "- Employee must be at least 15 years old"
             base:
               department_employee_limit: "Maximum number of employees (%{count}) reached for this department."
+        employee_position:
+          attributes:
+            start_date:
+                start_date_before_end_date: "must be earlier than the end date"
+                end_date_requires_start_date: "must be present if there is the end date"
   
           

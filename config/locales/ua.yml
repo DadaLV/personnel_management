@@ -17,6 +17,7 @@ ua:
     cancel: "Скасувати"
     back: "Повернутися"
     new_position: "Створити посаду"
+    create_new_position: "Сворити нову посаду"
   
   first_name: "Ім'я"
   middle_name: "По-батькові"
@@ -97,7 +98,17 @@ ua:
             salary:
               not_a_number: "Зарплата повинна бути числом"
               greater_than: "Зарплата повинна бути більшою за %{count}"
-              
+
+        employee_position:
+          attributes:
+            employee:
+              required: "Працівник не заначений"
+            position:
+              required: "Посада не заначена"         
+            start_date:
+              start_date_before_end_date: "Початкова дата повинна бути раніше за кінцеву дату"
+              end_date_requires_start_date: "Початкова дата повинна бути вказана, якщо вказана кінцева дата"
+          
   shared:
     error_messages:
       errors: 
@@ -189,6 +200,25 @@ ua:
       edit_position: "Редагувати посаду"
     show:
       position_details: "Деталі посади"
+  
+  employee_positions:
+    index:
+      employee_positions_history: "Історія посад працівника"
+      position_name: "Посада"
+      start_date: "Початкова дата"
+      end_date: "Кінцева дата"
+      years_on_position: "Років на посаді"
+      basic_salary: "Базова зарплата"
+      total_salary: "Зарплата з надбавками"
+      no_positions_found: "В цього працівника нема посад"
+    edit:
+      edit_position: "Редагувати посаду"
+    new:
+      add_employee_position: "Додати посаду працівнику"
+    form:
+      please_select: "Будь ласка оберіть"
+      
+
       
       
       

@@ -6,8 +6,8 @@
   <div class="form-group mb-4 col-sm-6">    
     <%= form_with(url: employees_path, method: :get) do |form| %>
       
-        <%= form.collection_select :department_id, Department.all, :id, :name, prompt: t('employees.index.select.select_department'), class: "form-select form-select-lg mb-6" %>
-        <%= form.submit t('button.show_employees'), class: "btn btn-primary" %>
+        <%= form.collection_select :department_id, Department.all, :id, :name, { prompt: t('employees.index.select.select_department') }, class: "form-select form-select-lg mb-6" %>
+        <%= form.submit t('button.show_employees'), class: "btn btn-primary mt-4" %>
       
     <% end %>      
   </div>
