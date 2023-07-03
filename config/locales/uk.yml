@@ -1,4 +1,4 @@
-ua:
+uk:
   button:
     new_employee: "Новий працівник"
     show_employees: "Показати працівників"
@@ -17,8 +17,7 @@ ua:
     cancel: "Скасувати"
     back: "Повернутися"
     new_position: "Створити посаду"
-    create_new_position: "Сворити нову посаду"
-  
+    create_new_position: "Сворити нову посаду"  
   first_name: "Ім'я"
   middle_name: "По-батькові"
   last_name: "Прізвище"
@@ -28,10 +27,8 @@ ua:
   home_adress: "Адреса проживання"
   head_of_department: "Керівник департаменту"
   department: "Департамент"
-
   confirmations:
     are_you_sure: "Ви впевнені?"
-
   errors:
     format: "%{message}"
   activerecord:
@@ -42,7 +39,6 @@ ua:
           few: "Помилка у збереженні %{model}: %{count} помилки"
           many: "Помилка у збереженні %{model}: %{count} помилок"
           other: "Помилка у збереженні %{model}: %{count} помилки"
-
       models:
         department:
           attributes:
@@ -53,8 +49,7 @@ ua:
             abbreviation:
               blank: "Абревіатура не може бути порожньою"
               too_short: "Абревіатура занадто коротка (мінімум %{count} символа)"
-              too_long: "Абревіатура занадто довга (максимум %{count} символів)"
-        
+              too_long: "Абревіатура занадто довга (максимум %{count} символів)"        
         employee:
           attributes:
             department:
@@ -88,7 +83,6 @@ ua:
               too_long: "Адреса проживання занадто довга (максимум %{count} символів)"
             base:
               department_employee_limit: "Досягнуто максимальну кількість працівників (%{count}) для цього відділу."
-
         position:
           attributes:
             name:
@@ -98,7 +92,6 @@ ua:
             salary:
               not_a_number: "Зарплата повинна бути числом"
               greater_than: "Зарплата повинна бути більшою за %{count}"
-
         employee_position:
           attributes:
             employee:
@@ -108,7 +101,6 @@ ua:
             start_date:
               start_date_before_end_date: "Початкова дата повинна бути раніше за кінцеву дату"
               end_date_requires_start_date: "Початкова дата повинна бути вказана, якщо вказана кінцева дата"
-
         vacation:
           attributes:
             employee:
@@ -120,7 +112,6 @@ ua:
               end_date_after_start_date: "Кінцева дата має бути пізніше початкової"
             base:
               validate_department_vacation_limit: "Максимальна кількість працівників, що є у відпустці в даному періоді, досягнула максимуму для цього департаменту"
-
   shared:
     error_messages:
       errors: 
@@ -129,47 +120,37 @@ ua:
         many: "Знайдено %{count} помилок:"
         other: "Знайдено %{count} помилки:"
       prohibited_saving: "не може бути збережено"
-
   layouts:    
     navbar:
       employees: "Працівники"
       departments: "Департаменти"
       positions: "Посади"
-      vacations: "Відпустки"
-  
+      vacations: "Відпустки"  
   departments:
     index:
       departments: "Департаменти"
       department_name: "Назва департаменту"
       department_abbreviation: "Абревіатура департаменту"
       number_of_employees: "Кількість працівників"
-
     create:
       success: "Відділ було успішно створено."
       name: "Назва департаменту"
       abbreviation: "Абревіатура департаменту"
       create_department: "Створити департамент"
-
     edit:
       edit_department: "Редагувати департамент"
-
     update:
       success: "Департамент було успішно оновлено."
-
     destroy:
       success: "Департамент було успішно видалено."
-
     new:      
       name: "Назва департаменту"
       abbreviation: "Абревіатура департаменту"
-
     show:
-      department_employees_list: "Список працівників"      
-
+      department_employees_list: "Список працівників" 
     form:
       name: "Назва департаменту"
       abbreviation: "Абревіатура департаменту"
-
   employees:
     index: 
       the_list_of_employees: "Список працівників"
@@ -190,8 +171,7 @@ ua:
     update:
       success: "Працівника було успішно оновлено."
     destroy:
-      success: "Працівника було успішно видалено."
-  
+      success: "Працівника було успішно видалено."  
   positions:
     index:
       positions: "Посади"
@@ -211,8 +191,7 @@ ua:
     edit:
       edit_position: "Редагувати посаду"
     show:
-      position_details: "Деталі посади"
-  
+      position_details: "Деталі посади"  
   employee_positions:
     index:
       employee_positions_history: "Історія посад працівника"
@@ -229,22 +208,10 @@ ua:
       add_employee_position: "Додати посаду працівнику"
     form:
       please_select: "Будь ласка оберіть"
-
   vacations:
     index:
       list_of_vacations: "Список відпусток"
       employee: "Працівник"
       position: "Посада"
       vacation_period: "Дати відпустки"
-      used_vacation_days: "Використаних днів відпустки"
-      
-
-      
-      
-      
-
-
-
-
-
-      
+      used_vacation_days: "Використаних днів відпустки"      

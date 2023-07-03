@@ -1,15 +1,12 @@
 class ApplicationController < ActionController::Base
-  before_action :set_locale
+  around_action :switch_locale
 
-  def set_language
-    selected_language = params[:language].to_sym
-    session[:locale] = selected_language
-    redirect_back(fallback_location: request.referer)
+  def switch_locale(&action)
+    locale = params[:locale] || I18n.default_locale
+    I18n.with_locale(locale, &action)
   end
 
-  private
-
-  def set_locale
-    I18n.locale = session[:locale] || I18n.default_locale
+  def default_url_options
+    { locale: I18n.locale }
   end
 end

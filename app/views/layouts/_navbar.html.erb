@@ -19,9 +19,9 @@
         </li>
         <li class="nav-item">
           <% if I18n.locale == :en %>
-            <%= button_to "UA", set_language_path(language: :ua), method: :post, class: 'btn btn-primary' %>
-          <% elsif I18n.locale == :ua %>
-            <%= button_to "ENG", set_language_path(language: :en), method: :post, class: 'btn btn-primary' %>
+            <%= link_to "UA", url_for(locale: :uk), class: 'btn btn-primary' %>
+          <% elsif I18n.locale == :uk %>
+            <%= link_to "ENG", url_for(locale: :en), class: 'btn btn-primary' %>
           <% end %>
         </li>
       </ul>
