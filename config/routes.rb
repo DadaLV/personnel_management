@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  namespace :api do
+    namespace :v1 do
+      resources :employees
+    end
+  end
+  mount Rswag::Ui::Engine => '/api-docs'
+  mount Rswag::Api::Engine => '/api-docs'
   resources :employees do
     resources :employee_positions, only: [:new, :create, :edit, :update], as: 'positions'
   end

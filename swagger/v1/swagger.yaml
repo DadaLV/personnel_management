@@ -1,0 +1,200 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+paths:
+  "/api/v1/employees":
+    post:
+      summary: Creates an employee
+      tags:
+      - Employees
+      parameters: []
+      responses:
+        '201':
+          description: employee created
+        '422':
+          description: invalid request
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                first_name:
+                  type: string
+                middle_name:
+                  type: string
+                last_name:
+                  type: string
+                passport_data:
+                  type: string
+                date_of_birth:
+                  type: string
+                  format: date
+                place_of_birth:
+                  type: string
+                home_address:
+                  type: string
+                department_id:
+                  type: integer
+              required:
+              - first_name
+              - last_name
+              - department_id
+          application/xml:
+            schema:
+              type: object
+              properties:
+                first_name:
+                  type: string
+                middle_name:
+                  type: string
+                last_name:
+                  type: string
+                passport_data:
+                  type: string
+                date_of_birth:
+                  type: string
+                  format: date
+                place_of_birth:
+                  type: string
+                home_address:
+                  type: string
+                department_id:
+                  type: integer
+              required:
+              - first_name
+              - last_name
+              - department_id
+  "/api/v1/employees/{id}":
+    get:
+      summary: Retrieves an employee
+      tags:
+      - Employees
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: employee found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  first_name:
+                    type: string
+                  middle_name:
+                    type: string
+                  last_name:
+                    type: string
+                  passport_data:
+                    type: string
+                  date_of_birth:
+                    type: string
+                    format: date
+                  place_of_birth:
+                    type: string
+                  home_address:
+                    type: string
+                  department_id:
+                    type: integer
+                required:
+                - id
+                - first_name
+                - last_name
+                - department_id
+            application/xml:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  first_name:
+                    type: string
+                  middle_name:
+                    type: string
+                  last_name:
+                    type: string
+                  passport_data:
+                    type: string
+                  date_of_birth:
+                    type: string
+                    format: date
+                  place_of_birth:
+                    type: string
+                  home_address:
+                    type: string
+                  department_id:
+                    type: integer
+                required:
+                - id
+                - first_name
+                - last_name
+                - department_id
+        '404':
+          description: employee not found
+    put:
+      summary: Updates an employee
+      tags:
+      - Employees
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      # - name: employee
+      #   in: path
+      #   schema:
+      #     type: object
+      #     properties:
+      #       first_name:
+      #         type: string
+      #       middle_name:
+      #         type: string
+      #       last_name:
+      #         type: string
+      #       passport_data:
+      #         type: string
+      #       date_of_birth:
+      #         type: string
+      #         format: date
+      #       place_of_birth:
+      #         type: string
+      #       home_address:
+      #         type: string
+      #       department_id:
+      #         type: integer
+          
+      responses:
+        '200':
+          description: employee updated
+        '400':
+          description: invalid request
+    delete:
+      summary: Deletes an employee
+      tags:
+      - Employees
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: employee deleted
+        '404':
+          description: employee not found
+servers:
+- url: http://localhost:3000
+  variables:
+    defaultHost:
+      default: http://localhost:3000
