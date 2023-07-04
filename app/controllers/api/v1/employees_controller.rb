@@ -24,7 +24,6 @@ class Api::V1::EmployeesController < ApplicationController
   end
 
   def update
-    @employee = Employee.find(params[:id])
     if @employee.update(employee_params)
       render json: @employee
     else
