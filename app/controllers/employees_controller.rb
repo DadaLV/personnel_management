@@ -17,7 +17,7 @@ class EmployeesController < ApplicationController
   def create
     @employee = Employee.new(employee_params)
     if @employee.save
-      flash[:notice] = "Employee was successfully created."
+      flash[:notice] = I18n.t('.create.success')
       redirect_to @employee 
     else
       render :new
@@ -29,7 +29,7 @@ class EmployeesController < ApplicationController
 
   def update
     if @employee.update(employee_params)
-      flash[:notice] = "Position was successfully updated."
+      flash[:notice] = I18n.t('.update.success')
       redirect_to @employee
     else
       render :edit
@@ -38,7 +38,7 @@ class EmployeesController < ApplicationController
 
   def destroy
     @employee.destroy
-    flash[:notice] = "Employee was successfully destroyed."
+    flash[:notice] = I18n.t('.destroy.success')
     redirect_to employees_url
   end
 

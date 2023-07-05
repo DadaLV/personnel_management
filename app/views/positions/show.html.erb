@@ -1,20 +1,20 @@
 <div class="container m-4">
-<h2>Position Details</h2>
+<h2><%= t('.position_details') %></h2>
   <p>
-    <strong>Name:</strong>
+    <strong><%= t('positions.index.name') %>:</strong>
     <%= @position.name %>
   </p>
 
   <p>
-    <strong>Salary:</strong>
+    <strong><%= t('positions.index.salary') %>:</strong>
     <%= @position.salary %>
   </p>
 
   <br>
 
-  <%= link_to "Edit", edit_position_path(@position), class: "btn btn-primary" %>
-  <%= button_to position_path(@position), method: :delete, onclick: "return confirm('Are you sure?')", class: "btn btn-light", form: { class: "d-inline" } do %>
-                Delete Position
+  <%= link_to t('button.edit'), edit_position_path(@position), class: "btn btn-primary" %>
+  <%= button_to position_path(@position), method: :delete, onclick: "return confirm('#{t('confirmations.are_you_sure')}')", class: "btn btn-light", form: { class: "d-inline" } do %>
+                <%= t('button.delete') %>
   <% end %> 
-  <%= link_to "Back", positions_path, class: "btn btn-primary" %>
+  <%= link_to t('button.back'), positions_path, class: "btn btn-primary" %>
 </div>
