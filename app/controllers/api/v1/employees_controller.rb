@@ -1,4 +1,4 @@
-class Api::V1::EmployeesController < ApplicationController
+class Api::V1::EmployeesController < Api::V1::BaseController
   skip_before_action :verify_authenticity_token
   before_action :set_employee, only: [:show, :update, :destroy]
 
@@ -41,9 +41,5 @@ class Api::V1::EmployeesController < ApplicationController
 
     def employee_params
       params.require(:employee).permit(:first_name, :middle_name, :last_name, :passport_data, :date_of_birth, :place_of_birth, :home_address, :department_id)
-    end
-
-    def render_errors(record)
-      render json: { errors: record.errors.full_messages }, status: :unprocessable_entity
     end
 end

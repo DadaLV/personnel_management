@@ -1,4 +1,4 @@
-class Api::V1::DepartmentsController < ApplicationController
+class Api::V1::DepartmentsController < Api::V1::BaseController
   skip_before_action :verify_authenticity_token
   before_action :set_department, only: [:show, :edit, :update, :destroy]
 
@@ -41,10 +41,6 @@ class Api::V1::DepartmentsController < ApplicationController
 
   def department_params
     params.require(:department).permit(:name, :abbreviation)
-  end
-
-  def render_errors(record)
-    render json: { errors: record.errors.full_messages }, status: :unprocessable_entity
   end
 
 end
