@@ -4,26 +4,18 @@ class Api::V1::DepartmentsController < ApplicationController
 
   def index
     @departments = Department.all
-    render json: @departments
   end
-
-  # def new
-  #   @department = Department.new
-  # end
 
   def create
     @department = Department.new(department_params)
-
     if @department.save
-      flash[:notice] = "Department was successfully created."
-      render json: @department.to_json(only: [:id, :name, :abbreviation]), status: :created
+      render json: { status: :created }
     else
-      render json: { errors: @department.errors.full_messages }, status: :unprocessable_entity
+      render_errors(@department)
     end
   end
 
   def show
-    render json: @department.to_json(only: [:id, :name, :abbreviation])
   end
 
   def edit    
@@ -31,9 +23,9 @@ class Api::V1::DepartmentsController < ApplicationController
 
   def update
     if @department.update(department_params)
-      render json: @department
+      render json: { status: :updated }
     else
-      render json: { errors: @employee.errors.full_messages }, status: :unprocessable_entity
+      render_errors(@department)
     end    
   end
 
@@ -49,6 +41,10 @@ class Api::V1::DepartmentsController < ApplicationController
 
   def department_params
     params.require(:department).permit(:name, :abbreviation)
+  end
+
+  def render_errors(record)
+    render json: { errors: record.errors.full_messages }, status: :unprocessable_entity
   end
 
 end

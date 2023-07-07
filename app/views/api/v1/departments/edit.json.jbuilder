@@ -1,0 +1,1 @@
+json.(@department, :id, :name, :abbreviation)
