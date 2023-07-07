@@ -26,14 +26,14 @@ class Employee < ApplicationRecord
 
   def date_of_birth_not_younger_than_15_years
     if date_of_birth.present? && date_of_birth > 15.years.ago
-      errors.add(:date_of_birth, "employee must be at least 15 years old")
+      errors.add(:date_of_birth, :date_of_birth_not_younger_than_15_years)
     end
   end
 
 
   def department_employee_limit
     if department.present? && department.employees.for_department(department_id).count >= Employee::MAXIMUM_NUMBER_OF_EMPLOYEES_IN_DEPARTMENT
-      errors.add(:base, "Maximum number of employees (#{Employee::MAXIMUM_NUMBER_OF_EMPLOYEES_IN_DEPARTMENT}) reached for this department.")
+      errors.add(:base, :department_employee_limit, count: Employee::MAXIMUM_NUMBER_OF_EMPLOYEES_IN_DEPARTMENT)
     end
   end
 

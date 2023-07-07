@@ -6,16 +6,23 @@
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <%= link_to "Employees", employees_path, class: "nav-link" %>
+          <%= link_to t(".employees"), employees_path, class: "nav-link" %>
         </li>
         <li class="nav-item">
-          <%= link_to "Departments", departments_path, class: "nav-link" %>
+          <%= link_to t(".departments"), departments_path, class: "nav-link" %>
         </li>
         <li class="nav-item">
-          <%= link_to "Positions", positions_path, class: "nav-link" %>
+          <%= link_to t(".positions"), positions_path, class: "nav-link" %>
         </li>
         <li class="nav-item">
-          <%= link_to "Vacations", vacations_path, class: "nav-link" %>
+          <%= link_to t(".vacations"), vacations_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <% if I18n.locale == :en %>
+            <%= link_to "UA", url_for(locale: :uk), class: 'btn btn-primary' %>
+          <% elsif I18n.locale == :uk %>
+            <%= link_to "ENG", url_for(locale: :en), class: 'btn btn-primary' %>
+          <% end %>
         </li>
       </ul>
     </div>

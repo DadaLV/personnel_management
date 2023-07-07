@@ -13,10 +13,10 @@ class PositionsController < ApplicationController
   end
 
   def create
-    position = Position.new(position_params)
-    if position.save
-      flash[:notice] = "Position was successfully created."
-      redirect_to position
+    @position = Position.new(position_params)
+    if @position.save
+      flash[:notice] = I18n.t('.create.success')
+      redirect_to @position
     else
       render :new
     end
@@ -27,7 +27,7 @@ class PositionsController < ApplicationController
 
   def update
     if @position.update(position_params)
-      flash[:notice] = "Position was successfully updated."
+      flash[:notice] = I18n.t('.update.success')
       redirect_to @position
     else
       render :edit
@@ -36,7 +36,7 @@ class PositionsController < ApplicationController
 
   def destroy
     @position.destroy
-    flash[:notice] = "Position was successfully destroyed."
+    flash[:notice] = I18n.t('.destroy.success')
     redirect_to positions_url
   end
 

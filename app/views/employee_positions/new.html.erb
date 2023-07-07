@@ -1,11 +1,9 @@
 <div class="container mt-4">
-  <h1>Employee Position</h1>
+  <h2><%= t('.add_employee_position') %></h2>
 
   <%= render "form", position: @position %>
 
-  <h3>Create new position</h3>
+  <%= link_to t('button.create_new_position'), new_position_path, class: "btn btn-primary" %>
 
-  <%= link_to "Create  New Position", new_position_path, class: "btn btn-primary" %>
-
-  <%= link_to "Back", @employee, class: "btn btn-primary"  %>
+  <%= link_to t('button.back'), @employee, class: "btn btn-primary"  %>
 </div>

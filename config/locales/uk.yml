@@ -1,0 +1,217 @@
+uk:
+  button:
+    new_employee: "Новий працівник"
+    show_employees: "Показати працівників"
+    view_position: "Дивитися посаду"
+    show: "Показати"
+    edit: "Редагувати"
+    delete: "Видалити"
+    create_department: "Створити департамент"
+    employees_list: "Перейти до списку працівників"
+    view_details: "Детальніше"
+    submit: "Зберегти"
+    departments_list: "Перейти до списку департаментів"
+    create_department: "Створити департамент"
+    view_positions_history: "Переглянути історію посад"
+    add_position: "Додати посаду"
+    cancel: "Скасувати"
+    back: "Повернутися"
+    new_position: "Створити посаду"
+    create_new_position: "Сворити нову посаду"  
+  first_name: "Ім'я"
+  middle_name: "По-батькові"
+  last_name: "Прізвище"
+  passport_data: "Паспортні дані"
+  date_of_birth: "Дата народження"
+  place_of_birth: "Місце народження"
+  home_adress: "Адреса проживання"
+  head_of_department: "Керівник департаменту"
+  department: "Департамент"
+  confirmations:
+    are_you_sure: "Ви впевнені?"
+  errors:
+    format: "%{message}"
+  activerecord:
+    errors:
+      template:
+        header:
+          one: "Помилка у збереженні %{model}: 1 помилка"
+          few: "Помилка у збереженні %{model}: %{count} помилки"
+          many: "Помилка у збереженні %{model}: %{count} помилок"
+          other: "Помилка у збереженні %{model}: %{count} помилки"
+      models:
+        department:
+          attributes:
+            name:
+              blank: "Назва не може бути порожньою"
+              too_short: "Назва занадто коротка (мінімум %{count} символа)"
+              too_long: "Назва занадто довга (максимум %{count} символів)"
+            abbreviation:
+              blank: "Абревіатура не може бути порожньою"
+              too_short: "Абревіатура занадто коротка (мінімум %{count} символа)"
+              too_long: "Абревіатура занадто довга (максимум %{count} символів)"        
+        employee:
+          attributes:
+            department:
+              required: "Відділ повинен існувати" 
+            first_name:
+              blank: "Ім'я не може бути порожнім"
+              too_short: "Ім'я занадто коротке (мінімум %{count} символа)"
+              too_long: "Ім'я занадто довге (максимум %{count} символів)"
+            middle_name:
+              too_short: "По-батькові занадто коротке (мінімум %{count} символа)"
+              too_long: "По-батькові занадто довге (максимум %{count} символів)"
+            last_name:
+              blank: "Прізвище не може бути порожнім"
+              too_short: "Прізвище занадто коротке (мінімум %{count} символа)"
+              too_long: "Прізвище занадто довге (максимум %{count} символів)"
+            passport_data:
+              blank: "Поспортні дані не може бути порожніми"
+              invalid: "Поспортні дані мають складатися з двох літер та шести цифр"
+              taken: "Вже використовується"
+            date_of_birth:
+              blank: "Дата народження не може бути порожньою"
+              invalid: "Недійсна дата"
+              date_of_birth_not_younger_than_15_years: "Працівник повинен бути не молодшим за 15 років"
+            place_of_birth:
+              blank: "Місце народження не може бути порожнім"
+              too_short: "Місце народження занадто коротке (мінімум %{count} символи)"
+              too_long: "Місце народження занадто довге (максимум %{count} символів)"
+            home_address:
+              blank: "Адреса проживання не може бути порожньою"
+              too_short: "Адреса проживання занадто коротка (мінімум %{count} символи)"
+              too_long: "Адреса проживання занадто довга (максимум %{count} символів)"
+            base:
+              department_employee_limit: "Досягнуто максимальну кількість працівників (%{count}) для цього відділу."
+        position:
+          attributes:
+            name:
+              blank: "Назва не може бути порожньою"
+              too_short: "Назва занадто коротка (мінімум %{count} символа)"
+              too_long: "Назва занадто довга (максимум %{count} символів)"
+            salary:
+              not_a_number: "Зарплата повинна бути числом"
+              greater_than: "Зарплата повинна бути більшою за %{count}"
+        employee_position:
+          attributes:
+            employee:
+              required: "Працівник не заначений"
+            position:
+              required: "Посада не заначена"         
+            start_date:
+              start_date_before_end_date: "Початкова дата повинна бути раніше за кінцеву дату"
+              end_date_requires_start_date: "Початкова дата повинна бути вказана, якщо вказана кінцева дата"
+        vacation:
+          attributes:
+            employee:
+              required: "Працівник не заначений"
+            start_date:
+              blank: "Початкова дата не може бути порожньою"
+            end_date:
+              blank: "Кінцевава дата не може бути порожньою"
+              end_date_after_start_date: "Кінцева дата має бути пізніше початкової"
+            base:
+              validate_department_vacation_limit: "Максимальна кількість працівників, що є у відпустці в даному періоді, досягнула максимуму для цього департаменту"
+  shared:
+    error_messages:
+      errors: 
+        one: "Знайдена одна помилка:"
+        few: "Знайдено %{count} помилки:"
+        many: "Знайдено %{count} помилок:"
+        other: "Знайдено %{count} помилки:"
+      prohibited_saving: "не може бути збережено"
+  layouts:    
+    navbar:
+      employees: "Працівники"
+      departments: "Департаменти"
+      positions: "Посади"
+      vacations: "Відпустки"  
+  departments:
+    index:
+      departments: "Департаменти"
+      department_name: "Назва департаменту"
+      department_abbreviation: "Абревіатура департаменту"
+      number_of_employees: "Кількість працівників"
+    create:
+      success: "Відділ було успішно створено."
+      name: "Назва департаменту"
+      abbreviation: "Абревіатура департаменту"
+      create_department: "Створити департамент"
+    edit:
+      edit_department: "Редагувати департамент"
+    update:
+      success: "Департамент було успішно оновлено."
+    destroy:
+      success: "Департамент було успішно видалено."
+    new:      
+      name: "Назва департаменту"
+      abbreviation: "Абревіатура департаменту"
+    show:
+      department_employees_list: "Список працівників" 
+    form:
+      name: "Назва департаменту"
+      abbreviation: "Абревіатура департаменту"
+  employees:
+    index: 
+      the_list_of_employees: "Список працівників"
+      sort_by_department: "Сортувати за департаментами"
+      no_employee_found: "У цьому відділі нема працівників"
+      select:
+        select_department: "Виберіть відділ"
+    show:
+      employee_details: "Картка працівника"
+      current_position: "Поточна посада"
+      no_current_position: "Працівник не має посади"
+    edit:
+      edit_employee: "Редагувати дані працівника"
+    new:
+      new_employee: "Новий працівник"
+    create:
+      success: "Працівника було успішно створено."    
+    update:
+      success: "Працівника було успішно оновлено."
+    destroy:
+      success: "Працівника було успішно видалено."  
+  positions:
+    index:
+      positions: "Посади"
+      name: "Назва посади"
+      salary: "Зарплата"
+    new:
+      new_position: "Створити посаду"
+    create:
+      success: "Посаду було успішно створено."    
+    update:
+      success: "Посаду було успішно оновлено."
+    destroy:
+      success: "Посаду було успішно видалено."
+    form:
+      name: "Назва посади"
+      salary: "Зарплата"
+    edit:
+      edit_position: "Редагувати посаду"
+    show:
+      position_details: "Деталі посади"  
+  employee_positions:
+    index:
+      employee_positions_history: "Історія посад працівника"
+      position_name: "Посада"
+      start_date: "Початкова дата"
+      end_date: "Кінцева дата"
+      years_on_position: "Років на посаді"
+      basic_salary: "Базова зарплата"
+      total_salary: "Зарплата з надбавками"
+      no_positions_found: "В цього працівника нема посад"
+    edit:
+      edit_position: "Редагувати посаду"
+    new:
+      add_employee_position: "Додати посаду працівнику"
+    form:
+      please_select: "Будь ласка оберіть"
+  vacations:
+    index:
+      list_of_vacations: "Список відпусток"
+      employee: "Працівник"
+      position: "Посада"
+      vacation_period: "Дати відпустки"
+      used_vacation_days: "Використаних днів відпустки"      

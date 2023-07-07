@@ -54,6 +54,8 @@ gem 'draper'
 
 gem 'will_paginate', '~> 4.0'
 
+gem 'rails-i18n', '~> 7.0.0'
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 
