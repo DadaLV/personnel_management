@@ -1,0 +1,272 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+tags:
+  - name: Departments
+    description: here are crud for departments
+    
+  - name: Employees
+    description: Access to Employees crud
+paths:
+  "/api/v1/employees":
+    post:
+      summary: Creates an employee
+      tags:
+      - Employees
+      parameters: []
+      responses:
+        '201':
+          description: Successful operation
+        '422':
+          description: Invalid request
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Employee'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Employee'
+  "/api/v1/employees/{id}":
+    get:
+      summary: Retrieves an employee
+      tags:
+      - Employees
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: employee found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Employee'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Employee'
+        '404':
+          description: employee not found
+    put:
+      summary: Update an existing employee
+      tags:
+      - Employees
+      description: Update an existing employee by Id
+      operationId: updateEmployee
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        description: Update an existent employee
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Employee'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Employee'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Employee'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Employee'          
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Employee'
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Employee not found
+        '405':
+          description: Validation exception
+    delete:
+      summary: Deletes an employee
+      tags:
+      - Employees
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '204':
+          description: employee deleted
+        '404':
+          description: employee not found
+  "/api/v1/departments":
+    post:
+      summary: Creates a department
+      tags:
+      - Departments
+      parameters: []
+      responses:
+        '201':
+          description: department created
+        '422':
+          description: invalid request
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Department'
+              required:
+              - name
+              - abbreviation
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Department'
+  "/api/v1/departments/{id}":
+    get:
+      summary: Retrieves an department
+      tags:
+      - Departments
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: department found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Department'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Department'
+        '404':
+          description: department not found
+    put:
+      summary: Update an existing department
+      tags:
+      - Departments
+      description: Update an existing department by Id
+      operationId: updateDepartment
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        description: Update an existent department
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Department'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Department'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Department'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Department'          
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Department'
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Department not found
+        '405':
+          description: Validation exception
+    delete:
+      summary: Deletes a department
+      tags:
+      - Departments
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '204':
+          description: department deleted
+        '404':
+          description: department not found      
+components:
+  schemas:
+    Employee:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 51
+        first_name:
+          type: string
+          example: "api"
+        middle_name:
+          type: string
+          example: "api"
+        last_name:
+          type: string
+          example: "api"
+        passport_data:
+          type: string
+          example: "WW454545"
+        date_of_birth:
+          type: string
+          format: date
+          example: "2002-12-13"
+        place_of_birth:
+          type: string
+          example: "Lviv"
+        home_address:
+          type: string
+          example: "Horodotska str"
+        department_id:
+          type: integer
+          example: 7
+      required:
+        - first_name
+        - last_name
+        - passport_data
+        - date_of_birth
+        - place_of_birth
+        - home_address
+        - department_id
+    Department:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 8
+        name:
+          type: string
+          example: "FBI Department"
+        abbreviation:
+          type: string
+          example: "FBI"
+      required:
+        - name
+        - abbreviation      
+servers:
+- url: http://localhost:3000
+  variables:
+    defaultHost:
+      default: http://localhost:3000
